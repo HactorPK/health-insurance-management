@@ -1,0 +1,91 @@
+.styled-table {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: auto;
+    font-family: sans-sarif;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 238, 226, 0.15);
+    margin-bottom: 10px;
+}
+
+.styled-table thead tr {
+    background-color: #063cd0;
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    color: white;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #224ce4
+}
+
+.styled-table tbody tr:nth-of-type(even){
+    background-color: #32c9fb;
+}
+.styled-table tbody tr:nth-of-type(odd){
+    background-color: #143261;
+}
+
+.styled-table tbody tr:last-of-type{
+    border-bottom: 2px solid #485ff2;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+.btn-div{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 690px;
+    margin-left: 350px;
+}
+.btn-back-emp, .btn-employee-emp{
+    height: 45px;
+    width: 100px;
+    background-color: blue;
+
+}
+
+.btn-employee:hover{
+}
+
+
+.btn-edit {
+    background-color: #00ba06;
+}
+.btn-edit:hover, .btn-delete:hover, .btn-view:hover, .btn-back-emp:hover, .btn-employee-emp:hover{
+    opacity: 0.8;
+}
+.btn-edit:active, .btn-delete:active, .btn-view:active, .btn-back-emp:active, .btn-employee-emp:active{
+    margin-left:1px;
+    margin-bottom: 1px;
+}
+.btn-delete {
+    background-color: #f44336;
+}
+
+.btn-view {
+    background-color: #736161;
+}
+
