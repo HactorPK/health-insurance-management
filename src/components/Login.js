@@ -1,5 +1,5 @@
 import React from "react"
-import "../styles/insertemployee.css"
+import "../styles/insertinformation.css"
 import Form from "./Form"
 import { Logo } from './Logo';
 
@@ -9,7 +9,7 @@ export class Login extends React.Component
     {
         return(
     
-    <div className="container-ins-employee" style={{width:"40vw"}}>
+    <div className="information-container" style={{width:"40vw"}}>
                 <Logo className =" logoFig"/>
                 <h2 className="title" > Employee Panel </h2>
                 {<Form/>}
