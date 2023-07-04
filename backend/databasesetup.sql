@@ -24,3 +24,4 @@ CREATE TABLE `users` (
   `password` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`username`)
 )
+insert into users (username, userpassword) values ("Admin", "Admin123");
