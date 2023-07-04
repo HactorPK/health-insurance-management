@@ -76,6 +76,13 @@ app.get("/getinsurance/:id", (req, res) => {
   });
 });
 
+app.get("/fetchinsurances", (req, res)=>{
+  const sqlFetch = "select insurance_name from insurances order by insurance_name";
+  con.query(sqlFetch, (error, result)=>{
+    res.send(result)
+  })
+});
+
 app.put("/editinsurance/:id", (req, res) => {
   const { id } = req.params;
   const { insurance_name, insurance_premium, insurance_age_limit } = req.body;
@@ -98,7 +105,7 @@ app.put("/editinsurance/:id", (req, res) => {
 
 app.get("/viewemployees", (req, res) => {
   const sqlGet =
-    "select employeeID, employee_name, employee_uname, employee_pswrd, employee_plcy from employees";
+    "select employeeID, employee_name, employee_uname, employee_pswrd, insurance_name from employees";
   con.query(sqlGet, (error, result) => {
     res.send(result);
   });
@@ -139,14 +146,14 @@ app.get("/getemployee/:id", (req, res) => {
 
 app.put("/editemployee/:id", (req, res) => {
   const { id } = req.params;
-  const { employee_name, employee_uname, employee_pswrd, employee_plcy} = req.body;
+  const { employee_name, employee_uname, employee_pswrd, insurance_name} = req.body;
 
   const sqlUpdate =
-    "update employees set employee_name = ?, employee_uname = ?, employee_pswrd = ? ,employee_plcy = ? where employeeID = ?";
+    "update employees set employee_name = ?, employee_uname = ?, employee_pswrd = ? ,insurance_name = ? where employeeID = ?";
 
   con.query(
     sqlUpdate,
-    [employee_name, employee_uname, employee_pswrd, employee_plcy, id],
+    [employee_name, employee_uname, employee_pswrd, insurance_name, id],
     (error, result) => {
       if (error) {
         console.log(error);

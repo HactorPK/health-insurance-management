@@ -9,13 +9,24 @@ const initialState = {
   employee_name: "",
   employee_uname: "",
   employee_password: "",
-  employee_plcy: "",
+  insurance_name: "",
 };
 function AddEditEmployee() {
   const [state, setState] = useState(initialState);
 
-  const { employee_name, employee_uname, employee_pswrd, employee_plcy } =
+  const { employee_name, employee_uname, employee_pswrd, insurance_name } =
     state;
+
+  const [insuranceList, setInsuranceList] = useState([{}]);
+
+  useEffect(() => {
+    const fetchpolicy = async () => {
+      const response = await axios.get("http://localhost:3001/fetchinsurances");
+      const policylist = await response.data;
+      setInsuranceList(policylist);
+    };
+    fetchpolicy();
+  });
 
   const navigate = useNavigate();
 
@@ -37,7 +48,7 @@ function AddEditEmployee() {
       !employee_name ||
       !employee_uname ||
       !employee_pswrd ||
-      !employee_plcy
+      !insurance_name
     ) {
       toast.error("Please provide value into each input field");
     } else {
@@ -47,7 +58,7 @@ function AddEditEmployee() {
             employee_name: employee_name,
             employee_uname: employee_uname,
             employee_pswrd: employee_pswrd,
-            employee_plcy: employee_plcy,
+            insurance_name: insurance_name,
           })
           .then((res) => console.log(res.data))
           .catch((err) => toast.error(err));
@@ -58,7 +69,7 @@ function AddEditEmployee() {
             employee_name: employee_name,
             employee_uname: employee_uname,
             employee_pswrd: employee_pswrd,
-            employee_plcy: employee_plcy,
+            insurance_name: insurance_name,
           })
           .then((res) => console.log(res.data))
           .catch((err) => toast.error(err));
@@ -110,18 +121,15 @@ function AddEditEmployee() {
             onChange={handleinputChange}
           />
         </fieldset>
-
-        <fieldset>
-          <input
-            type="text"
-            name="employee_plcy"
-            id="employee_plcy"
-            value={employee_plcy || ""}
-            placeholder="Policy Given To Employee..."
-            required
-            onChange={handleinputChange}
-          />
-        </fieldset>
+        <div>
+          <select className="form-control" value={insurance_name} onChange={handleinputChange}>
+            {insuranceList.map((policy, index) => (
+              <option value="" key={policy.insuranceID}>
+                {policy.insurance_name}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <input
           className="saveupdate"
@@ -131,8 +139,6 @@ function AddEditEmployee() {
         <Link to="/viewemployees">
           <input type="button" value="Go Back" />
         </Link>
-        
-       
       </form>
     </div>
   );
