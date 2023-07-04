@@ -12,7 +12,7 @@ const con = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "Handsome123",
-  database: "insurancesystem",
+  database: "DB",
 });
 
 app.post("/login", (req, res) => {

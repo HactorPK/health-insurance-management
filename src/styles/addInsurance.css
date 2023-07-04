@@ -3,7 +3,7 @@ fieldset {
     text-align: center;
 }
 
-input[type="text"] {
+input[type="text"] , .form-control{
     font-family: JetBrains Mono;
     background-color: #22262B;
     color: white;

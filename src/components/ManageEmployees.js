@@ -45,7 +45,7 @@ function ViewEmployees() {
                 <th scope="row">{index + 1}</th>
                 <td>{item.employee_name}</td>
                 <td>{item.employee_uname}</td>
-                <td>{item.employee_plcy}</td>
+                <td>{item.insurance_name}</td>
                 <td>
                   <Link to={`/updateemp/${item.employeeID}`}>
                     <button className="btn-edit"> Edit Details</button>

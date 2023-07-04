@@ -42,14 +42,10 @@ function AddEditEmployee() {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      !employee_name ||
-      !employee_uname ||
-      !employee_pswrd ||
-      !insurance_name
-    ) {
+    if (!employee_name || !employee_uname || !employee_pswrd || !insurance_name) {
       toast.error("Please provide value into each input field");
     } else {
       if (!id) {
@@ -86,6 +82,7 @@ function AddEditEmployee() {
     <div>
       <ToastContainer />
       <form onSubmit={handleSubmit}>
+
         <fieldset>
           <input
             type="text"
@@ -121,15 +118,24 @@ function AddEditEmployee() {
             onChange={handleinputChange}
           />
         </fieldset>
-        <div>
-          <select className="form-control" value={insurance_name} onChange={handleinputChange}>
-            {insuranceList.map((policy, index) => (
-              <option value="" key={policy.insuranceID}>
-                {policy.insurance_name}
-              </option>
-            ))}
-          </select>
-        </div>
+
+        <fieldset>
+          <div>
+            <select
+              className="form-control"
+              value= {insurance_name}
+              onChange={handleinputChange}
+              name = 'insurance_name'
+            >
+              <option value ="">Select Policy Given To Employee</option>
+              {insuranceList.map((policy) => (
+                <option value={policy.insurance_name} key ={policy.insuranceID}>
+                  {policy.insurance_name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
 
         <input
           className="saveupdate"
