@@ -65,6 +65,7 @@ function ViewInsurances() {
           })}
         </tbody>
       </table>
+      
       <div className = "btns-back-add">
         <form action="http://localhost:3000/home">
           <button className="btn-back-ins" >

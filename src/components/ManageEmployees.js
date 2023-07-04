@@ -26,7 +26,7 @@ function ViewEmployees() {
   };
 
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div style={{ marginTop: "150px" }} className="container-div">
       <ToastContainer />
 
       <table className="styled-table">
@@ -65,6 +65,7 @@ function ViewEmployees() {
       </table>
           
         <div className="btn-div">
+          
           <form action="http://localhost:3000/home">
             <button className="btn-back-emp"> Back </button>
           </form>
@@ -72,6 +73,7 @@ function ViewEmployees() {
             <button className="btn-employee-emp">Add Employee</button>
           </form>
         </div>
+
     </div>
   );
 }
