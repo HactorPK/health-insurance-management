@@ -1,8 +1,15 @@
-a{
+.container-div {
+    width: 662px;
+    vertical-align: center;
+    margin: auto;
+}
+
+a {
     display: flex;
     justify-content: center;
     text-decoration: none;
 }
+
 button {
     border: none;
     color: white;
@@ -41,48 +48,59 @@ button {
     border-bottom: 1px solid #224ce4
 }
 
-.styled-table tbody tr:nth-of-type(even){
+.styled-table tbody tr:nth-of-type(even) {
     background-color: #32c9fb;
 }
-.styled-table tbody tr:nth-of-type(odd){
+
+.styled-table tbody tr:nth-of-type(odd) {
     background-color: #143261;
 }
 
-.styled-table tbody tr:last-of-type{
+.styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #485ff2;
 }
 
 
-.btns-back-add{
-
+.btns-back-add {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     max-width: 670px;
-    margin-left: 360px;
 }
-.btn-back-ins, .btn-add-ins{
+
+.btn-back-ins,
+.btn-add-ins {
     height: 45px;
     width: 100px;
     background-color: blue;
 
 }
 
-.btn-employee:hover{
-}
+.btn-employee:hover {}
 
 
 .btn-edit {
     background-color: #00ba06;
 }
-.btn-edit:hover, .btn-delete:hover, .btn-view:hover, .btn-back-ins:hover, .btn-add-ins:hover{
+
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-view:hover,
+.btn-back-ins:hover,
+.btn-add-ins:hover {
     opacity: 0.8;
 }
-.btn-edit:active, .btn-delete:active, .btn-view:active, .btn-back-ins:active, .btn-add-ins:active{
-    margin-left:1px;
+
+.btn-edit:active,
+.btn-delete:active,
+.btn-view:active,
+.btn-back-ins:active,
+.btn-add-ins:active {
+    margin-left: 1px;
     margin-bottom: 1px;
 }
+
 .btn-delete {
     background-color: #f44336;
 }
@@ -90,4 +108,3 @@ button {
 .btn-view {
     background-color: #736161;
 }
-

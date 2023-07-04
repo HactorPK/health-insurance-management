@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/home.css";
 function Home() {
   return (
-    <div>
+    <div className="home-tab">
       <h1 className="txt-options">There's always an option for you...</h1>
       <div className="emp-policies-div">
         <form action="http://localhost:3000/viewinsurances">

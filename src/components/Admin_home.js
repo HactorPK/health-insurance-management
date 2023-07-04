@@ -8,12 +8,8 @@ export class AdminHome extends React.Component
     render()
     {
         return(
-            <div className="container">
-                <Logo className =" logoFig"/>
-                <br></br>
-                <br></br>
-                <br></br>
-
+            <div className="container-employee">
+                <Logo/>
                 {<Home/>}
             </div>
         )

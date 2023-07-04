@@ -28,7 +28,7 @@ function ViewInsurances() {
 
   let history = useNavigate();
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div style={{ marginTop: "150px" }} className="container-div">
       <ToastContainer />
       <Link to="/insertinsurance"></Link>
       <table className="styled-table">
