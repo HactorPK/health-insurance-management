@@ -34,7 +34,7 @@ function ViewEmployees() {
           <tr>
             <th style={{ textAlign: "center" }}></th>
             <th style={{ textAlign: "center" }}>Employee Name</th>
-            <th style={{ textAlign: "center" }}>Employee Username</th>
+            <th style={{ textAlign: "center" }}>Employee Email</th>
             <th style={{ textAlign: "center" }}>Employee Insurance </th>
           </tr>
         </thead>
@@ -44,7 +44,7 @@ function ViewEmployees() {
               <tr key={item.employeeID}>
                 <th scope="row">{index + 1}</th>
                 <td>{item.employee_name}</td>
-                <td>{item.employee_uname}</td>
+                <td>{item.employee_email}</td>
                 <td>{item.insurance_name}</td>
                 <td>
                   <Link to={`/updateemp/${item.employeeID}`}>
@@ -65,7 +65,7 @@ function ViewEmployees() {
       </table>
           
         <div className="btn-div">
-          
+
           <form action="http://localhost:3000/home">
             <button className="btn-back-emp"> Back </button>
           </form>

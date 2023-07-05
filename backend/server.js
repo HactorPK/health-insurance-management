@@ -105,7 +105,7 @@ app.put("/editinsurance/:id", (req, res) => {
 
 app.get("/viewemployees", (req, res) => {
   const sqlGet =
-    "select employeeID, employee_name, employee_uname, employee_pswrd, insurance_name from employees";
+    "select employeeID, employee_name, employee_email, employee_pswrd, insurance_name from employees";
   con.query(sqlGet, (error, result) => {
     res.send(result);
   });
@@ -146,14 +146,14 @@ app.get("/getemployee/:id", (req, res) => {
 
 app.put("/editemployee/:id", (req, res) => {
   const { id } = req.params;
-  const { employee_name, employee_uname, employee_pswrd, insurance_name} = req.body;
+  const { employee_name, employee_email, employee_pswrd, insurance_name} = req.body;
 
   const sqlUpdate =
-    "update employees set employee_name = ?, employee_uname = ?, employee_pswrd = ? ,insurance_name = ? where employeeID = ?";
+    "update employees set employee_name = ?, employee_email = ?, employee_pswrd = ? ,insurance_name = ? where employeeID = ?";
 
   con.query(
     sqlUpdate,
-    [employee_name, employee_uname, employee_pswrd, insurance_name, id],
+    [employee_name, employee_email, employee_pswrd, insurance_name, id],
     (error, result) => {
       if (error) {
         console.log(error);

@@ -7,14 +7,14 @@ import "../styles/addInsurance.css";
 
 const initialState = {
   employee_name: "",
-  employee_uname: "",
+  employee_email: "",
   employee_password: "",
   insurance_name: "",
 };
 function AddEditEmployee() {
   const [state, setState] = useState(initialState);
 
-  const { employee_name, employee_uname, employee_pswrd, insurance_name } =
+  const { employee_name, employee_email, employee_pswrd, insurance_name } =
     state;
 
   const [insuranceList, setInsuranceList] = useState([{}]);
@@ -45,14 +45,14 @@ function AddEditEmployee() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!employee_name || !employee_uname || !employee_pswrd || !insurance_name) {
+    if (!employee_name || !employee_email || !employee_pswrd || !insurance_name) {
       toast.error("Please provide value into each input field");
     } else {
       if (!id) {
         axios
           .post("http://localhost:3001/insertemployee", {
             employee_name: employee_name,
-            employee_uname: employee_uname,
+            employee_email: employee_email,
             employee_pswrd: employee_pswrd,
             insurance_name: insurance_name,
           })
@@ -63,7 +63,7 @@ function AddEditEmployee() {
         axios
           .put(`http://localhost:3001/editemployee/${id}`, {
             employee_name: employee_name,
-            employee_uname: employee_uname,
+            employee_email: employee_email,
             employee_pswrd: employee_pswrd,
             insurance_name: insurance_name,
           })
@@ -96,12 +96,13 @@ function AddEditEmployee() {
         </fieldset>
 
         <fieldset>
+
           <input
-            type="text"
-            name="employee_uname"
-            id="employee_uname"
-            value={employee_uname || ""}
-            placeholder="Employee Username"
+            type="email"
+            name="employee_email"
+            id="employee_email"
+            value={employee_email || ""}
+            placeholder="Employee Email"
             required
             onChange={handleinputChange}
           />
