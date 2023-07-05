@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../styles/home.css";
+//this is the home page
 function Home() {
+  //easy to grasp jsx below, different class names for styling used
   return (
     <div className="home-tab">
       <h1 className="txt-options">There's always an option for you...</h1>

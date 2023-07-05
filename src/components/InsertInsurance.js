@@ -3,6 +3,8 @@ import "../styles/insertinformation.css"
 import AddInsurance from "./Add_Insurance";
 import { Logo } from './Logo';
 
+//used when filling in or updating policy details
+//using classname "information-container" as a template css
 export class InsertInsurance extends React.Component
 {
     render()
@@ -10,9 +12,6 @@ export class InsertInsurance extends React.Component
         return(
             <div className="information-container">
                 <Logo className =" logoFig"/>
-                <br></br>
-                <br></br>
-                <br></br>
                 <h1 className="title" > Fill In Insurance Details</h1>
                 <AddInsurance/>
             </div>

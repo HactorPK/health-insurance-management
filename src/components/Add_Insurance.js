@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/addInsurance.css";
 
+//sets initial state of variables
 const initialState = {
   insurance_name: "",
   insurance_premium: "",
@@ -19,22 +20,30 @@ function AddInsurance() {
 
   const { id } = useParams();
 
+  //useEffect runs to fetch policy data
   useEffect(() => {
     axios
       .get(`http://localhost:3001/getinsurance/${id}`)
       .then((resp) => setState({ ...resp.data[0] }));
   }, [id]);
-
+  
+  //only runs when change is made on input fields.
   const handleinputChange = (e) => {
     const { name, value } = e.target;
-    setState({ ...state, [name]: value });
+    setState({ ...state, [name]: value }); //sets state of variables to new inputted values. 
+    //done by mapping
   };
+
+  //runs when save button is clicked
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //shouldn't submit on just any event.
+    //toast of error message if one of fields is missing.
     if (!insurance_name || !insurance_premium || !insurance_age_limit) {
       toast.error("please provide value into each input field");
     } else {
+      //if all fields are filled in
       if (!id) {
+        //insert the insurance into backend by axios post
         axios
           .post("http://localhost:3001/insertinsurance", {
             insurance_name: insurance_name,
@@ -46,6 +55,7 @@ function AddInsurance() {
         toast.success("Insurance Added Succesfully");
       }
       else{
+        //if in edit mode , make edit insurance call put instead of post for modifying.
         axios.put(`http://localhost:3001/editinsurance/${id}`, {
           insurance_name: insurance_name,
           insurance_premium: insurance_premium,
@@ -55,13 +65,13 @@ function AddInsurance() {
         .catch((err) => toast.error(err));
       toast.success("Insurance Updated Succesfully");
       }
-
+      //after 1000 ms, view insurances open automatically.
       setTimeout(() => {
         navigate("/viewinsurances", 1000);
       });
     }
   };
-
+  //jsx used for display.
   return (
     <div>
       <ToastContainer />

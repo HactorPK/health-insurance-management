@@ -3,6 +3,7 @@ import "../styles/insertinformation.css"
 import Form from "./Form"
 import { Logo } from './Logo';
 
+//login page with logo and form
 export class Login extends React.Component
 {
     render()

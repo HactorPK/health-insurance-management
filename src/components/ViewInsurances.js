@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/insurances.css";
-import { useNavigate } from "react-router-dom";
 
+
+//mother function to view all insurances
 function ViewInsurances() {
+  //list of all insurances in an empty array
   const [insuranceList, setInsuranceList] = useState([]);
 
+  //fetch all insurances from DB
   const loadInsurances = async () => {
     const response = await axios.get("http://localhost:3001/viewinsurances");
     setInsuranceList(response.data);
@@ -18,6 +21,7 @@ function ViewInsurances() {
     loadInsurances();
   }, []);
 
+  //api call to delete an insurance
   const deleteInsurance = (id) => {
     if (window.confirm("Are you sure you want to delete this Insurance ?")) {
       axios.delete(`http://localhost:3001/remove/${id}`);
@@ -25,8 +29,7 @@ function ViewInsurances() {
       setTimeout(() => loadInsurances(), 500);
     }
   };
-
-  let history = useNavigate();
+  //jsx with container-div as a template css also used in viewing employees
   return (
     <div style={{ marginTop: "150px" }} className="container-div">
       <ToastContainer />
@@ -41,6 +44,7 @@ function ViewInsurances() {
           </tr>
         </thead>
         <tbody>
+          {/* mapping insurances to table view */}
           {insuranceList.map((item, index) => {
             return (
               <tr key={item.insuranceID}>
@@ -65,7 +69,7 @@ function ViewInsurances() {
           })}
         </tbody>
       </table>
-      
+
       <div className = "btns-back-add">
         <form action="http://localhost:3000/home">
           <button className="btn-back-ins" >

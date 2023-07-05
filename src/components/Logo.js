@@ -1,6 +1,8 @@
 import React from "react"
 import "../styles/logo.css"
 
+//logo creation with 3 rings
+//most detailing done in logo.css file
 export class Logo extends React.Component
 {
     render()

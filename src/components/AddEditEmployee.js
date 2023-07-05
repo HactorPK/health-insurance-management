@@ -5,12 +5,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/addInsurance.css";
 
+//setting initial state
 const initialState = {
   employee_name: "",
   employee_email: "",
   employee_password: "",
   insurance_name: "",
 };
+//mother function
 function AddEditEmployee() {
   const [state, setState] = useState(initialState);
 
@@ -19,6 +21,7 @@ function AddEditEmployee() {
 
   const [insuranceList, setInsuranceList] = useState([{}]);
 
+  //used to fetch policies for drop down list
   useEffect(() => {
     const fetchpolicy = async () => {
       const response = await axios.get("http://localhost:3001/fetchinsurances");
@@ -32,19 +35,23 @@ function AddEditEmployee() {
 
   const { id } = useParams();
 
+  //fetches employee details, filtering by employee id which is a primary key ( unique )
   useEffect(() => {
     axios
       .get(`http://localhost:3001/getemployee/${id}`)
       .then((resp) => setState({ ...resp.data[0] }));
   }, [id]);
 
+  //only runs when a change is recorded on input field
   const handleinputChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
 
+  //submits details on click of save button
   const handleSubmit = (e) => {
     e.preventDefault();
+    //prevents submission of empty fields.
     if (!employee_name || !employee_email || !employee_pswrd || !insurance_name) {
       toast.error("Please provide value into each input field");
     } else {
@@ -128,6 +135,7 @@ function AddEditEmployee() {
               onChange={handleinputChange}
               name = 'insurance_name'
             >
+              {/* mapping used to display dropdown as options */}
               <option value ="">Select Policy Given To Employee</option>
               {insuranceList.map((policy) => (
                 <option value={policy.insurance_name} key ={policy.insuranceID}>
@@ -137,6 +145,7 @@ function AddEditEmployee() {
             </select>
           </div>
         </fieldset>
+
 
         <input
           className="saveupdate"
